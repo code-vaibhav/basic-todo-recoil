@@ -1,25 +1,15 @@
 import * as React from 'react'
 import {useRecoilState} from 'recoil'
+import { Checkbox, Row, Col, Button } from 'antd'
+import { Link } from 'react-router-dom'
 import * as Atoms from '../atoms/index'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 
 const TodoItem = ({item}: {item: Atoms.Item}) => {
   const [todoList, setTodoList] = useRecoilState(Atoms.todoListState)
   const index = todoList.findIndex((listItem: Atoms.Item) => listItem === item)
   
-  const editItemText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newList = replaceItemAtIndex(todoList, index, {
-      ...item,
-      text: e.target.value
-    })
-    setTodoList(newList)
-  }
-  
-  const deleteItem = (_e: React.MouseEvent<HTMLButtonElement>) => {
-    const newList = removeItemAtIndex(todoList, index);
-    setTodoList(newList)
-  }
-
-  const toggleItemCompletion = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const toggleItemCompletion = (e: CheckboxChangeEvent) => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
       isCompleted: !item.isCompleted
@@ -28,16 +18,12 @@ const TodoItem = ({item}: {item: Atoms.Item}) => {
   }
   
   return (
-    <div>
-      <input type='text' value={item.text} onChange={editItemText} />
-      <input type='checkbox' checked={item.isCompleted} onChange={toggleItemCompletion} />
-      <button onClick={deleteItem}>Remove</button>
-    </div>
-  )
-
-  function removeItemAtIndex (arr: Atoms.Item[], index: number) {
-    return [...arr.slice(0, index), ...arr.slice(index+1)]
-  }
+    <Row justify='center' align='middle' gutter={8}>
+      <Col><Checkbox checked={item.isCompleted} onChange={toggleItemCompletion} /></Col>
+      <Col><p>{item.text}</p></Col>
+      <Col><Link to={`/edit/${item.id}`}><Button>Edit</Button></Link></Col>
+    </Row>
+  )  
 
   function replaceItemAtIndex (arr: Atoms.Item[], index: number, newValue: Atoms.Item) {
     return [...arr.slice(0, index), newValue, ...arr.slice(index+1)]

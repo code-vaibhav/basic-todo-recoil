@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as uuid from 'uuid'
 import {useSetRecoilState} from 'recoil'
+import { Button, Input, Row, Col } from 'antd'
 import * as Atoms from '../atoms/index'
 
 const TodoItemCreator = () => {
@@ -24,10 +25,10 @@ const TodoItemCreator = () => {
   }
   
   return (
-    <div>
-      <input type='text' value={inputValue} onChange={onChange} />
-      <button onClick={onClick} >Add</button>
-    </div>
+    <Row justify='center' align='stretch'>
+      <Col><Input type='text' value={inputValue} onChange={onChange} /></Col>
+      <Col><Button type='primary' onClick={onClick} >Add</Button></Col>
+    </Row>
   )
 }
 

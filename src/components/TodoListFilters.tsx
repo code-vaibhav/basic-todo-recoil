@@ -1,22 +1,26 @@
 import * as React from 'react'
 import { useRecoilState } from 'recoil'
+import { Select } from 'antd'
 import * as Atoms from '../atoms/index'
+import { SelectValue } from 'antd/lib/select'
 
 const TodoListFilters = () => {
   const [filter, setFilter] = useRecoilState(Atoms.todoListFilterState)
-  const updateFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === 'show All' || e.target.value === 'show Completed' || e.target.value === 'show Uncompleted')
-      setFilter(e.target.value)
+  const updateFilter = (value: SelectValue) => {
+    if (value === 'show All' || value === 'show Completed' || value === 'show Uncompleted')
+      setFilter(value)
     else 
       alert("wrong selection")
   }
+
+  const { Option } = Select
   
   return (
-    <select value={filter} onChange={updateFilter}>
-      <option value='show All'>All</option>
-      <option value='show Completed'>Completed</option>
-      <option value='show Uncompleted'>Uncompleted</option>
-    </select>
+    <Select value={filter} onChange={updateFilter}>
+      <Option value='show All'>All</Option>
+      <Option value='show Completed'>Completed</Option>
+      <Option value='show Uncompleted'>Uncompleted</Option>
+    </Select>
   )
 }
 

@@ -1,0 +1,22 @@
+@import '~antd/dist/antd.css';
+
+.input {
+  display: inline;
+  width: 300px;
+}
+
+.header {
+  background-color: #364051;
+  padding: 10px 0;
+}
+
+.header h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 2.3em;
+  margin: 0;
+}
+
+.header button {
+  color: white;
+}
