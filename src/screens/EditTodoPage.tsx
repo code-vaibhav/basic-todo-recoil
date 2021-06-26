@@ -32,15 +32,23 @@ const EditTodoPage = (props: any) => {
 
   return (
     <Row>
-      <Col>
-        <form onSubmit={onFormSubmit}>
-          <Row>
-            <Col><Input type='text' name='todoText' value={inputValue} onChange={onChange}/></Col>
-            <Col><Button type='primary' htmlType='submit'>Save</Button></Col>
-          </Row>
-        </form>
+      <Col lg={{offset: 6, span: 12}} offset={2} span={20}>
+        <div style={{padding: '15px 0 15px 0', backgroundColor: '#f7f7f7', marginBottom: '10px'}}>
+          <h1>Edit todo</h1>
+        </div>
+        
+        <Row gutter={6}>
+          <Col flex='auto'>
+            <form onSubmit={onFormSubmit}>
+              <Row gutter={6}>
+                <Col flex='auto'><Input type='text' name='todoText' value={inputValue} onChange={onChange}/></Col>
+                <Col flex='min-width'><Button type='primary' htmlType='submit'>Save</Button></Col>
+              </Row>
+            </form>
+          </Col>
+          <Col><Button type='ghost' onClick={removeItem}>Remove</Button></Col>
+        </Row>
       </Col>
-      <Col><Button type='ghost' onClick={removeItem}>Remove</Button></Col>
     </Row>
   )
 

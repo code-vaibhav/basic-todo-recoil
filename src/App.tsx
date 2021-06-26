@@ -6,18 +6,16 @@ import Header from './components/Header'
 import EditTodoPage from './screens/EditTodoPage'
 import './App.css'
 
-
 const App = () => {
-  // const isLoggedIn = useRecoilValue(Atoms.loginState)
-  
   return (
     <Router>
       <div>
-        <Header />
+        <Route component={Header} />
         <Switch>
           <Route path='/dashboard' component={DashboardPage} />
           <Route path='/edit/:id' component={EditTodoPage} />
-          <Route path='/' component={LoginPage} />
+          <Route path='/' component={LoginPage} exact/>
+          {/* <Route component={404page} /> */}
         </Switch>
       </div>
     </Router>

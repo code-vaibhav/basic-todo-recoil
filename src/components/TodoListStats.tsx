@@ -14,7 +14,7 @@ const TodoListStats = () => {
   const formattedPrecentCompleted = Math.round(percentCompleted);
 
   return (
-    <Row justify='center'>
+    <Row style={{padding: '10px 0 20px 0', backgroundColor: '#f7f7f7'}}>
       <Col>
         <h1>Completed <strong>{totalCompletedNum}</strong> out of <strong>{totalNum}</strong> left <strong>{totalUncompletedNum}</strong> <br/> Percentage completed: <strong>{formattedPrecentCompleted}</strong>%</h1>
       </Col>

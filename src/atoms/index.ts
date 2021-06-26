@@ -19,8 +19,3 @@ export const todoListFilterState = atom<filterState>({
   key: "todoListFilterState",
   default: 'show All'
 })
-
-export const loginState = atom<boolean>({
-  key: "loginstate",
-  default: false
-})

@@ -16,7 +16,7 @@ const TodoListFilters = () => {
   const { Option } = Select
   
   return (
-    <Select value={filter} onChange={updateFilter}>
+    <Select value={filter} onChange={updateFilter} style={{margin: '15px 0 0 0'}}>
       <Option value='show All'>All</Option>
       <Option value='show Completed'>Completed</Option>
       <Option value='show Uncompleted'>Uncompleted</Option>

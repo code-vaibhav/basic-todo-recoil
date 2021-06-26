@@ -25,9 +25,9 @@ const TodoItemCreator = () => {
   }
   
   return (
-    <Row justify='center' align='stretch'>
-      <Col><Input type='text' value={inputValue} onChange={onChange} /></Col>
-      <Col><Button type='primary' onClick={onClick} >Add</Button></Col>
+    <Row>
+      <Col flex='auto'><Input type='text' value={inputValue} onChange={onChange} /></Col>
+      <Col flex='min-width'><Button type='primary' onClick={onClick} >Add</Button></Col>
     </Row>
   )
 }
