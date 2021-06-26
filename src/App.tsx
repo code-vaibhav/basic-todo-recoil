@@ -4,13 +4,18 @@ import LoginPage from './screens/Login'
 import DashboardPage from './screens/DashboardPage'
 import Header from './components/Header'
 import EditTodoPage from './screens/EditTodoPage'
+import * as Atoms from './atoms/index'
 import './App.css'
+import { useRecoilValue } from 'recoil'
 
 const App = () => {
+  const isLoggedIn = useRecoilValue(Atoms.loginState)
+  console.log(isLoggedIn);
+  
   return (
     <Router>
       <div>
-        <Route component={Header} />
+        {isLoggedIn && <Route component={Header} />}
         <Switch>
           <Route path='/dashboard' component={DashboardPage} />
           <Route path='/edit/:id' component={EditTodoPage} />

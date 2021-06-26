@@ -1,11 +1,16 @@
 import * as React from "react";
 import { Input, Button, Form, Checkbox } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import * as Atoms from '../atoms/index'
 import "../styles/login.css";
+import { useSetRecoilState } from "recoil";
 
 const LoginPage = ({history}: any) => {
+  const setLoggedIn = useSetRecoilState(Atoms.loginState)
+  
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log(e);
+    setLoggedIn(true)
     history.push('/dashboard')
   };
   
